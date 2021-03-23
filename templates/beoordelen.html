@@ -1,0 +1,83 @@
+<!-- sub.html -->
+{% extends "base.html" %}
+{% block content %}
+
+
+ 
+
+
+	  
+    <h2> Selecteer</h1>
+
+ 
+     <table class="highlight">
+        <thead>
+          <tr>
+              <th>Hits</th>
+           
+              <th>Naam</th>
+              <th>Volg</th>
+              <th>Verwijder</th>
+              
+          </tr>
+        </thead>
+	   <tbody>
+
+ {% for item in data %}
+		<tr>
+				<td>
+		{{item[1]}}
+		
+
+			</td>
+		<td>
+		{% set naam = item[0][29:-10]  %}
+		<a  href="{{item[0]}}#sortBy:PRICE|sortOrder:DECREASING" target="_blank" > {{naam}}  </a> 
+	</td>
+	<td>
+				   {% if item[2] == 'STAR' %}
+		<form action="/beoordelen" method="POST">
+			<button class="btn waves-effect waves-light light-green darken-3 white-text" type="submit" name="handelaar" value="NONE{{item[0]}}">
+				<i class="material-icons">star</i>
+			</button>
+		           
+			       
+			       
+			       {% else %}
+			       <form action="/beoordelen" method="POST">
+			<button class="btn waves-effect waves-light #689f38 light-green darken-2" type="submit" name="handelaar" value="STAR{{item[0]}}">
+				<i class="material-icons">star_border</i>
+			</button>
+			       {% endif %}
+			   
+			   
+	</td>
+
+  <td>
+	     
+	   
+			<button class="btn waves-effect waves-light red darken-3 white-text" type="submit" name="handelaar" value="HIDE{{item[0]}}">
+					<i class="material-icons">close</i>
+			</button>
+		</form>	 
+	     
+	     
+	     
+	 
+	</td>
+
+	{% endfor %}
+	</tr>
+	  </tbody>
+      </table>
+	
+		</div> 		<!--end col-->
+
+
+	
+
+</div> 	 <!--end row-->
+
+ 
+  {% endblock %}
+

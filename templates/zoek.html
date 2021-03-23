@@ -1,0 +1,119 @@
+<!-- sub.html -->
+{% extends "base.html" %}
+{% block content %}
+
+
+   
+
+   
+    <h2> Huidige zoektermen</h1>
+            
+ <form action="/zoek" method="POST">
+	 
+	  <table class="highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Zoekterm</th>
+              <th>Hits</th>
+              <th>Gezocht op</th>
+              <th>nu zoeken</th> 
+              <th>verberg</th> 
+              <th>verwijder</th>                   
+          </tr>
+        </thead>
+	   <tbody>
+	 
+     {% for item in data %}
+
+<tr>
+	<td>
+		<div>
+			<div style="text-align:left;" class="btn  light-green darken-3 white-text ">{{"%s " % item[0]}} </div>
+	
+
+		</div>
+	</td>
+	
+	<td>
+
+		 {{item[1]}} 	
+	</td>
+	
+	<td>
+
+		
+		 
+ {{item[2]}} 
+
+
+		 
+	</td>
+	
+	<td>
+			<button  class="btn waves-effect waves-light light-green darken-3 white-text" type="submit" name="zoeken" value="Z{{item[0]}}">
+				<i class="material-icons">search</i>
+	
+	</td>
+	
+	<td>
+	  {% if 'HIDE' == item[3]  %}
+	
+	
+			<button  class="btn waves-effect waves-light light-green darken-3 white-text" type="submit" name="zoeken" value="V{{item[0]}}">
+				<i class="material-icons">visibility_off</i>
+	
+	
+	
+	{% else %}
+	
+	
+			<button class="btn waves-effect waves-light light-green darken-3 white-text" type="submit" name="zoeken" value="H{{item[0]}}">
+				<i class="material-icons">visibility</i>
+	
+	
+	{% endif %}
+	</td>
+	
+  <td>
+			<button class="btn waves-effect waves-light  red darken-3 white-text" type="submit" name="zoeken" value="X{{item[0]}}">
+				<i class="material-icons">close</i>
+	
+	</td>
+  
+   {% endfor %}
+</tr>
+   </tbody>
+      </table>
+   
+   </form>
+
+     
+     
+		  <h2> Nieuwe zoekterm</h1>
+		
+		 <form action="/zoek" method="POST">
+			 <input placeholder="nieuwe zoekterm" id="first_name" type="text" class="validate" name="nieuwe_zoekterm">
+          
+			 
+			<button class="btn waves-effect waves-light #cddc39  lime darken-3" type="submit" name="zoeken" value="addthistothat">
+				nu zoeken
+			</button>
+		</form>	
+		
+		<br><br>
+		
+	<!--	  <form action="/zoek" method="POST">
+			<button class="btn waves-effect waves-light #cddc39  lime darken-3" type="submit" name="zoeken" value="backtonormaltimesplease">
+				terug naar standaard zoektermen
+			</button>
+			
+			
+		</form> -->
+		
+		
+		
+<br>
+<br>
+
+    
+  {% endblock %}

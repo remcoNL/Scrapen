@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Beoordelen</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  </head>
+  <body>
+	<nav>
+    <div class="nav-wrapper   light-green darken-3">
+      <a href="#!" class="brand-logo center">Rotterdam Zuid</a>
+      <ul class="left hide-on-med-and-down">
+		<li><a href="badges.html">&#x1F50D;&nbsp;&nbsp;&nbsp;Zoeken </a></li>
+        <li class="active"><a href="collapsible.html">&#9878;&nbsp;&nbsp;&nbsp;Beoordelen</a></li>
+         <li><a href="badges.html">&#128451;&nbsp;&nbsp;&nbsp;Archiveren</a></li>
+          </ul>
+            <ul class="right hide-on-med-and-down">
+         <li></li><a href="badges.html">&#x25ba;&nbsp;&nbsp;&nbsp;LOGOUT</a></li>
+        
+         
+      </ul>
+    </div>
+  </nav>
+	  
+	  
+    <h2> Beoordelen</h1>
+
+ <div class="row">
+	<div class="col s12 m6 l3"> <p>1 s12 m6 l3</p> </div>
+    <div class="col s12 m6 l3"> <p>2 s12 m6 l3</p>
+ 
+     <table class="highlight">
+        <thead>
+          <tr>
+              <th>Hits</th>
+              <th>Naam</th>
+              <th>Weggooien</th>
+              <th>Volgen</th>
+              
+          </tr>
+        </thead>
+	   <tbody>
+
+ {% for item in data %}
+		<tr>
+			<td>
+		{{item[1]}}
+			</td>
+		<td>
+		{% set naam = item[0][29:-10]  %}
+		<a  href="{{item[0]}}#sortBy:PRICE|sortOrder:DECREASING" target="_blank" > {{naam}}  </a> 
+	</td>
+	<td>
+	  <a class="waves-effect waves-light btn #ef5350 red lighten-1e">
+		  <i class="material-icons ">
+			delete
+			  </i>
+			  
+		  </a>
+	</td>
+
+  <td>
+	   <a class="waves-effect waves-light btn #ab47bc purple lighten-1">
+		   <i class="material-icons ">
+			   star_border
+			   </i>
+		
+			   </a>
+	</td>
+
+	{% endfor %}
+	  </tbody>
+      </table>
+	
+		</div> 		<!--end col-->
+
+	<div class="col s12 m6 l3"><p>3 s12 m6 l3</p></div>
+    <div class="col s12 m6 l3"><p>4 s12 m6 l3</p></div>
+	
+
+</div> 	 <!--end row-->
+
+  </body>
+</html>

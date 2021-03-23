@@ -1,0 +1,118 @@
+<!-- sub.html -->
+{% extends "base.html" %}
+{% block content %}
+ 
+<h2>Verkopers</h1>
+<table class="highlight">
+	<thead>
+		<tr>
+    <th>Naam</th>
+    <th>MP nummer</th> 
+    <th>Waarde nu</th>
+    <th>Waarde alles</th>
+    <th>Schermafdruk<br><br> YYYY MM DD</th>
+     <th>aanbod</th>
+     <th>bijwerken</th>
+     <th>PDF maken</th>
+     <th>verwijder</th>
+		</tr>
+	
+	</thead>	
+<tbody>
+	 
+	{% for  item in data %}
+{% set count = loop.index %}
+<tr>
+	<td>
+        {% set naam = item[0][29:-10]  %}
+		<a  href="{{item[0]}}#sortBy:PRICE|sortOrder:DECREASING" target="_blank" > {{naam}}  </a> 
+ 
+ 
+ 
+	</td>
+	<td>{{item[1]}}</td>
+	<td>{{item[2]}}</td>
+	<td>TBDs</td>
+	<td>{{item[3]}}</td>
+	<td>
+
+	  
+
+			<button onclick="toggleHideShow('m{{count}}')" class="btn waves-effect waves-light #689f38 light-green darken-2" >
+				<i class="material-icons">remove_red_eye</i>
+			</button>
+		
+	</td>
+     <form action="/archief" method="POST">	
+    <td>
+					<button class="btn waves-effect waves-light #689f38 light-green darken-2" type="submit" name="verkoper" value="STAR{{item[0]}}">
+				<i class="material-icons">sync</i>
+			</button>
+		
+		
+	</td>
+    <td><button>test</button></td>
+    
+    <td>
+    <button class="btn waves-effect waves-light #ef5350 red lighten-1e" type="submit" name="verkoper" value="HIDE{{item[0]}}">
+				<i class="material-icons">	remove_circle</i>
+			</button>
+    
+    </td>
+    
+    
+    	</form>
+</tr>
+<tr>
+ <td colspan="4">
+	 
+ {% for items in item[4] %}
+
+		<span style="display:none" class="m{{count}}">
+		<p>	&euro;	<b>{{"%s " % items[0]}}</b> &emsp;{{"%s " % items[1]}} </p>
+		
+		</span>
+ {% endfor %}
+ </td>
+</tr>
+ 
+ 
+ 
+ 
+	{% endfor %}
+
+	</tbody>
+	</table>
+ 
+
+
+<script>
+function toggleHideShow(div) {
+
+  var x = document.getElementsByClassName(div);
+  if (x[0].style.display != "none") {
+		for (var i = 0; i < x.length; i ++) 	{
+								x[i].style.display = "none";
+						
+												}
+	 }  else  {
+		
+		for (var i = 0; i < x.length; i ++) {
+						x[i].style.display = 'block';
+			
+											}
+		}
+}
+</script>	 
+
+
+
+
+
+
+  
+    
+    
+      {% endblock %}
+
+
