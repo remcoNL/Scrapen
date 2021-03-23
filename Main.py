@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect     
 import sqlite3
 import re
-#import Zoektermen as zt
 import SQL_Fabriek as sqlf
 
 app = Flask(__name__)
