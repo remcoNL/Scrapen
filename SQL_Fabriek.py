@@ -297,7 +297,7 @@ def scrape_aanbod_verkoper(verkoper_url, status):
 	#return
 
 
-scrape_aanbod_verkoper('https://www.marktplaats.nl/u/yasemin/38784903/', 'test')
+#scrape_aanbod_verkoper('https://www.marktplaats.nl/u/yasemin/38784903/', 'test')
 
 def scrape_aanbod_verkoperOUD(URL,status):  #verkoper van MP
 	#create_SQL_table_verkoper()	
